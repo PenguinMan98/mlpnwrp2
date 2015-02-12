@@ -35,3 +35,8 @@ phpunit.phar
 # bower stuff
 .bowerrc
 
+# yii2 configuration
+config/db.php
+config/params.php
+web/index.php
+
