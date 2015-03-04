@@ -7,6 +7,8 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\User */
 /* @var $form ActiveForm */
 ?>
+<p> Test Change </p>
+
 <div class="user-register">
 
     <?php $form = ActiveForm::begin(); ?>
