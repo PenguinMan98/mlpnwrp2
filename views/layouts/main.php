@@ -17,8 +17,11 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>NWRP - <?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?php if( $this->context->module->requestedRoute == 'user/register'): ?>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <?php endif; ?>
 </head>
 <body>
 
@@ -26,7 +29,7 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => 'NewWorldsRP 2.0',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -38,11 +41,19 @@ AppAsset::register($this);
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'About', 'url' => ['/site/about']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
+                    ['label' => 'Character',
+                        'items' => [
+                            ['label' => 'Character1', 'url' => '#'],
+                            ['label' => 'Character2', 'url' => '#'],
+                            ['label' => 'Character3', 'url' => '#'],
+                        ],
+                    ],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
                         ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                             'url' => ['/site/logout'],
-                            'linkOptions' => ['data-method' => 'post']],
+                            'linkOptions' => ['data-method' => 'post']
+                        ],
                 ],
             ]);
             NavBar::end();
